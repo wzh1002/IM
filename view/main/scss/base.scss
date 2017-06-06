@@ -1,0 +1,165 @@
+@import "_config";
+
+body {
+  background: #c3c3c3;
+  font-size: 12px;
+}
+textarea {
+  resize: none;
+}
+.img-small {
+  width: 40px;
+  height: 40px;
+}
+.img-medium {
+  width: 56px;
+  height: 56px;
+}
+.img-big {
+  width: 160px;
+  height: 160px;
+}
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .65);
+  z-index: 6;
+}
+.clips {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card-title {
+  background-color: #e5f4ff;
+  line-height: 80px;
+  color: #666;
+  position: relative;
+  border-bottom: $border-bottom1;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  min-width: 1000px;
+  width: 1002px;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+.trash {
+  position: absolute;
+  top: 15px;
+  right: 45px;
+  width: 22px;
+  height: 22px;
+  background: url(../../../img/trash.png) no-repeat;
+}
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(../../../img/icons.png) no-repeat;
+  vertical-align: middle;
+}
+.icon-close {
+  background-position: -34px -165px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  z-index: 1;
+}
+.icon-user {
+  background-position: -65px -142px;
+  position: absolute;
+  bottom: 36px;
+  right: 8px;
+  border: 1px solid #fff;
+}
+.icon-radio {
+  & {
+    position: relative;
+    background-position: -85px -50px;
+  }
+  &.cur {
+    background-position: -63px -50px;
+  }
+  &.cur2 {
+    background-position: -84px 0;
+  }
+}
+.icon-write {
+  background-position: -62px -114px;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+.icon-session {
+  background-position: -35px 0;
+}
+.icon-friend {
+  background-position: -35px -25px;
+}
+.icon-group {
+  background-position: -35px -50px;
+}
+.icon-group-info {
+  background-position: -63px -25px;
+}
+.icon-emoji {
+  width: 30px;
+  height: 30px;
+  background-position: 2px -187px;
+}
+.icon-file {
+  background-position: -35px -78px;
+  width: 25px;
+  height: 25px;
+}
+.radius-circle {
+  border-radius: 50%;
+}
+.pencil {
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  background: url(../../../img/pen.png);
+}
+.male {
+  background: url(../../../img/male.png);
+}
+.female {
+  background: url(../../../img/female.png);
+}
+.buttons {
+  .btn {
+    width: 100px;
+  }
+}
+.btn-ok {
+  background-color: #0888ff;
+  color: #fff;
+  border: 1px solid #0070d9;
+}
+.btn-cancel {
+  border: 1px solid #ccc;
+  background-color: #eee;
+  color: #666;
+}
+.btn-del {
+  background-color: #eb493d;
+  color: #fff;
+  border-color: #c23227;
+}
+.btn-send {
+  background-color: #0888ff;
+  color: #fff;
+  border: 1px solid #0070d9;
+}

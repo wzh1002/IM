@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+@import "base";
+@import "chat-panel";
+@import "chat-window";
+@import "card";
+@import "modify-avatar";
+@import "notice";
+@import "dialog";
+@import "blacklist";
+@import "create-group-container";
+@import "group-info-container";
+@import "cloud-msg-container";
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8899a7;
+  border-radius: 4px;
+}

@@ -1,0 +1,217 @@
+.card {
+  & {
+    width: 400px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -295px;
+    z-index: 50;
+  }
+  .account-info, .user-info {
+    position: relative;
+    padding: 30px;
+    border-bottom: $border-bottom3;
+  }
+  .account-info {
+    & {
+      zoom: 1;
+    }
+    .avatar {
+      float: left;
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+    }
+  }
+  .user-info {
+    border: none;
+  }
+  .des {
+    & {
+      float: left;
+      margin-left: 15px;
+      margin-top: 14px;
+    }
+    p {
+      height: 16px;
+      line-height: 16px;
+      color: #3a4a59;
+    }
+    .nick-name {
+      @extend .clips;
+      display: inline-block;
+      font-size: 16px;
+      max-width: 200px;
+    }
+    .gender {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      cursor: auto;
+    }
+  }
+  .operate {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+  .operate-btn {
+    display: inline-block;
+    border: $border-bottom3;
+    border-radius: 8px;
+    padding: 2px 8px;
+    background-color: #fff;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .operate-save {
+    background-color: #238efa;
+    color: #fff;
+    display: none;
+  }
+  .operate-cancel {
+    background-color: #eee;
+    color: #3a4a59;
+    display: none;
+  }
+  .edit {
+    .operate-edit {
+      display: none;
+    }
+    .operate-save, .operate-cancel{
+      display: inline-block;
+    }
+    .user-info-display {
+      display: none;
+    }
+    .user-info-edit {
+      display: block;
+    }
+  }
+  .user-info-edit {
+    display: none;
+  }
+  .item {
+    & {
+      position: relative;
+      height: 30px;
+      line-height: 14px;
+      font-size: 14px;
+      padding: 4px 0 4px 50px;
+      margin-top: 10px;
+    }
+    .save {
+      width: 60px;
+      font-size: 12px;
+      height: 16px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-left: 24px;
+      background-color: #0888ff;
+      color: #fff;
+    }
+    .item-des {
+      position: absolute;
+      top: 4px;
+      left: 0;
+    }
+    .item-input {
+      width: 170px;
+      padding: 0 10px;
+      height: 24px;
+      border: $border-bottom3;
+      line-height: 24px;
+      font-size: 14px;
+    }
+    .item-select {
+      border: $border-bottom3;
+      line-height: 14px;
+      font-size: 14px;
+      padding: 5px 20px 5px 10px;
+    }
+    .item-textarea {
+      width: 260px;
+      padding: 0 10px;
+      height: 50px;
+      border: $border-bottom3;
+      line-height: 24px;
+      font-size: 14px;
+    }
+  }
+  ul {
+    padding: 10px 30px;
+    font-size: 14px;
+    border-bottom: $border-bottom3;
+  }
+  li {
+    position: relative;
+    padding: 15px 0;
+    color: #3a4a59;
+  }
+  .off {
+    .switch {
+      & {
+        background: #e7ebef;
+      }
+      img {
+        left: 35px;
+      }
+    }
+  }
+  .switch {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 70px;
+    height: 24px;
+    background: #5cacde;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .buttons {
+    text-align: center;
+    padding-top: 18px;
+  }
+  .btn-ok {
+    margin-left: 14px;
+  }
+  .add {
+    display: none;
+  }
+  &.no-friend .add {
+    display: inline-block;
+  }
+  &.no-friend .del {
+    display: none;
+  }
+}
+.switch {
+  img {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 34px;
+    height: 22px;
+    cursor: pointer;
+  }
+  .off {
+    color: #8496a9;
+  }
+  .on {
+    color: #fff;
+  }
+  .off, .on {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 24px;
+  }
+}
+#my-info {
+  height: 550px;
+  margin-top: -275px;
+}

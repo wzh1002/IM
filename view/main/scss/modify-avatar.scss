@@ -1,0 +1,100 @@
+@import "config";
+
+.modify-avatar-card {
+  & {
+    position: absolute;
+    width: 540px;
+    height: 430px;
+    padding: 20px;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    margin-left: -270px;
+    margin-top: -215px;
+    z-index: 50;
+  }
+  > div {
+    position: relative;
+  }
+  p {
+    margin-top: 5px;
+    text-align: center;
+  }
+  .title {
+    margin-bottom: 20px;
+  }
+  .chose-file-container {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 300px;
+    height: 305px;
+    background-color: #e4e9ee;
+    z-index: 999;
+  }
+  .chose-file {
+    position: absolute;
+    top: 125px;
+    left: 100px;
+    width: 98px;
+    height: 32px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+  }
+  .chose {
+    &, img {
+      width: 300px;
+      height: 300px;
+      background-color: #e4e9ee;
+    }
+  }
+  .img {
+    border: $border-bottom3;
+    background-color: #e4e9ee;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .big {
+    & {
+      position: absolute;
+      top: 80px;
+      right: 30px;
+    }
+    .img, img {
+      @extend .img-big;
+    }
+  }
+  .small {
+    & {
+      position: absolute;
+      top: 275px;
+      right: 90px;
+    }
+    .img, img {
+      @extend .img-small;
+    }
+  }
+  .buttons {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+  }
+  .btn {
+    height: 34px;
+    margin-left: 10px;
+  }
+  .btn-cancel, .btn-reselect {
+    border: 1px solid #ccc;
+    background-color: #eee;
+    color: #666;
+  }
+  .btn-save {
+    background-color: #0888ff;
+    border: 1px solid #0070d9;
+    color: #fff;
+  }
+}

@@ -1,0 +1,141 @@
+.dialog {
+  & {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -193px;
+    margin-top: -126px;
+    width: 386px;
+    height: 252px;
+    background-color: #fff;
+    z-index: 100;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  div {
+    position: relative;
+  }
+  input {
+    height: 34px;
+    width: 300px;
+    font-size: 14px;
+    padding: 0 10px;
+    border: 1px solid #e0e6eb;
+    border-radius: 5px;
+  }
+  .title {
+    @extend .card-title;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    border: none;
+    background-color: #e5f4ff;
+    color: #666;
+  }
+  .content {
+    text-align: center;
+    padding-top: 20px;
+  }
+  .info {
+    & {
+      padding: 10px 28px;
+    }
+    img {
+      width: 56px;
+      height: 56px;
+    }
+    p {
+      color: #3a4a59;
+      font-size: 14px;
+    }
+    .account {
+      font-size: 12px;
+      color: #6b8299;
+    }
+  }
+  .tip {
+    padding: 10px;
+  }
+  .tip, .info, .back, .chat, .done, .add ,.remove-blacklist {
+    display: none;
+  }
+  .des {
+    padding: 10px;
+    text-align: left;
+  }
+  .buttons {
+    & {
+      position: absolute;
+      bottom: 0;
+      background-color: #fff;
+      width: 100%;
+      padding: 22px 0;
+      text-align: center;
+      border-top: 1px solid #e0e6eb;
+    }
+    .btn {
+      line-height: 22px;
+    }
+    .btn-cancel {
+      border: 1px solid #ccc;
+      background-color: #eee;
+      color: #666;
+      margin-right: 14px;
+    }
+  }
+  &.friend {
+    .search, .btn.close, input {
+      display: none;
+    }
+    .back, .chat {
+      display: inline-block;
+    }
+    .info {
+      display: block;
+    }
+  }
+  &.no-friend {
+    .search, .btn.close, input {
+      display: none;
+    }
+    .back, .add {
+      display: inline-block;
+    }
+    .info {
+      display: block;
+    }
+  }
+  &.blacklist {
+    .search, .btn.close, input {
+      display: none;
+    }
+    .back, .remove-blacklist {
+      display: inline-block;
+    }
+    .info {
+      display: block;
+    }
+  }
+  &.done {
+    .search, .btn.close, input {
+      display: none;
+    }
+    .back, .done {
+      display: inline-block;
+    }
+    .tip {
+      display: block;
+    }
+  }
+}
+#logout-dialog {
+  & {
+    height: 160px;
+  }
+  .buttons {
+    border-top: 0;
+  }
+  .content {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,183 @@
+.group-info-container {
+  & {
+    position: relative;
+    margin-left: 292px;
+    height: 620px;
+    width: 710px;
+    z-index: 2;
+    background: #fff;
+    border-radius: 5px;
+  }
+  .title {
+    & {
+      @extend .card-title;
+      line-height: 60px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .btn-back {
+      width: 68px;
+      height: 34px;
+      background-color: #f5f5f5;
+      color: #88939b;
+      font-size: 12px;
+      border: 1px solid #ced4d9;
+      position: absolute;
+      left: 15px;
+      top: 13px;
+    }
+  }
+  &.team .content {
+    height: 410px;
+  }
+  .content {
+    height: 300px;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  .add-item {
+    & {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px dashed #ccc;
+      line-height: 60px;
+      cursor: pointer;
+    }
+    .icon-plus {
+      background-position: -32px -113px;
+      margin-right: 3px;
+      width: 26px;
+      height: 26px;
+    }
+  }
+  ul {
+    li {
+      & {
+        float: left;
+        margin: 5px 25px;
+        width: 60px;
+        position: relative;
+        text-align: center;
+        display: inline-block;
+      }
+      img {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+      }
+      p {
+        @extend .clips;
+        line-height: 24px;
+        text-align: center;
+      }
+    }
+    a .hover {
+      display: none;
+    }
+    a:hover .hover {
+      display: block;
+    }
+  }
+  .hover {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    background-color: rgba(0, 0, 0, .75);
+    border-radius: 50%;
+    line-height: 56px;
+    color: #f24c3d;
+    top: 0;
+    left: 50%;
+    margin-left: -28px;
+  }
+  &.team .footer {
+    height: 94px;
+  }
+  .footer {
+    & {
+      height: 216px;
+      color: #aaa;
+      padding: 0 30px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      font-size: 12px;
+      background-color: #fff;
+      border: 5px;
+      border-radius: 5px;
+    }
+    .item {
+       & {
+         line-height: 24px;
+       }
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 16px;
+      }
+    }
+    .item-1 {
+      line-height: 40px;
+      margin-bottom: 14px;
+    }
+    .item-des {
+      margin-right: 30px;
+      font-size: 14px;
+      color: #666;
+    }
+    .radios {
+      .item-des {
+        width: 120px;
+      }
+      span {
+        margin-right: 20px;
+      }
+    }
+    .name {
+      color: #3a4a59;
+      line-height: 24px;
+    }
+    .exist-group, .dissolve-group {
+      position: absolute;
+      right: 30px;
+      bottom: 16px;
+      color: #0888ff;
+    }
+  }
+  .item-value, .item-des {
+    float: left;
+  }
+  .item-value {
+    &.edit {
+      a {
+        display: none;
+      }
+      #group-name-input, #group-info-input {
+        display: inline-block;
+      }
+    }
+    a {
+      & {
+        display: inline-block;
+        min-width: 200px;
+        min-height: 14px;
+      }
+      .icon-write {
+        display: none;
+      }
+      &.owner:hover {
+        .icon-write {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+#group-name-input, #group-info-input {
+  display: none;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  height: 23px;
+}

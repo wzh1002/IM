@@ -1,0 +1,227 @@
+.chat-window {
+  & {
+    position: relative;
+    margin-left: 292px;
+    height: 620px;
+    background: #fff;
+    border-radius: 5px;
+  }
+  .cloud-msg {
+    position: absolute;
+    line-height: 20px;
+    width: 68px;
+    height: 46px;
+    right: 10px;
+    top: 17px;
+    border: 1px solid #ddd;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .group-info {
+    @extend .cloud-msg;
+    right: 90px;
+  }
+  .title {
+    & {
+      @extend .card-title;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+    }
+    img {
+      @extend .img-medium;
+      float: left;
+      margin: 12px 10px 0 14px;
+    }
+  }
+  .content {
+    & {
+      position: absolute;
+      top: 81px;
+      bottom: 60px;
+      width: 100%;
+      overflow-y: auto;
+      padding: 10px 3%;
+    }
+    .time-msg {
+      text-align: center;
+      font-size: 12px;
+      color: #aaaaaa;
+      line-height: 30px;
+    }
+    .item {
+      & {
+        padding: 4px 0 10px 0;
+        text-align: center;
+        overflow: hidden;
+      }
+      .system-msg {
+        display: inline;
+        padding: 3px 15px;
+        background-color: #e5f4ff;
+        color: #6b8299;
+        font-size: 12px;
+        line-height: 30px;
+        word-wrap: break-word;
+        word-break: break-all;
+        border-radius: 5px;
+      }
+      .box {
+        max-width: 500px;
+      }
+    }
+    .item-me {
+      img {
+        @extend .img-small;
+        float: right;
+        margin-left: 14px;
+      }
+      .msg {
+        & {
+          float: right;
+          color: #fff;
+          background: #5cacde;
+        }
+        &:after {
+          left: 100%;
+          border-left: 5px solid #5cacde;
+        }
+        .box {
+          text-align: right;
+          padding: 7px 12px;
+        }
+      }
+    }
+    .item-other {
+      img {
+        @extend .img-small;
+        float: left;
+        margin-right: 14px;
+      }
+      .name {
+        text-align: left;
+        color: #3a4a59;
+        font-size: 12px;
+        padding-top: 5px;
+      }
+      .msg {
+        & {
+          float: left;
+          border-color: #eee;
+          color: #6b8299;
+          background: #eaeeef;
+        }
+        &:before {
+          right: 100%;
+          border-right: 5px solid #eaeeef;
+        }
+        .box {
+          text-align: left;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.06);
+          padding: 7px 12px;
+        }
+      }
+    }
+    img {
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .msg {
+      & {
+        position: relative;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid;
+      }
+      &:before, &:after {
+        content: ' ';
+        position: absolute;
+        top: 11px;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        width: 0;
+        height: 0;
+      }
+      .box {
+        min-height: 20px;
+        line-height: 20px;
+        overflow: hidden;
+        white-space: normal;
+        word-wrap: break-word;
+        word-break: break-all;
+        font-size: 14px;
+      }
+    }
+  }
+  .footer {
+    & {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 60px;
+      width: 100%;
+      padding: 0 15px;
+      background-color: #e5f4ff;
+      border-radius: 0 0 5px 5px;
+    }
+    .icon-emoji {
+      position: absolute;
+      top: 10px;
+      left: 8px;
+    }
+    .icon-file {
+      position: absolute;
+      top: 15px;
+      left: 48px;
+    }
+    .msg-input {
+      font: 14px/1.5 Helvetica, Arial, Tahoma;
+      width: 530px;
+      height: 38px;
+      padding: 6px 10px;
+      margin-top: 11px;
+      margin-left: 65px;
+      border-radius: 5px;
+    }
+    .btn-send {
+      position: absolute;
+      top: 11px;
+      right: 15px;
+      width: 70px;
+    }
+  }
+  .chat-mask {
+    & {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    .mask-title {
+      position: absolute;
+      top: 0;
+      height: 80px;
+      width: 100%;
+    }
+    .mask-content {
+      position: absolute;
+      width: 100%;
+      top: 80px;
+      background: rgba(251, 252, 190, 0.8);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+    .mask-footer {
+      position: absolute;
+      bottom: 0;
+      height: 60px;
+      background: rgba(229, 244, 255, 0.8);
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web IM</title>
+    <meta name="description" content="一个模拟网易云信的静态IM">
+    <meta name="keywords" content="IM、网易云信、静态">
+    <link rel="stylesheet" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/emoji.css">
+    <link rel="stylesheet" href="./css/style.min.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="chat-panel" id="chat-panel">
+            <div class="header"></div>
+            <div class="nav">
+                <span class="nav-tab" data-nav="sessions-wrapper">
+                    <i class="icon icon-session"></i>
+                </span>
+                <span class="nav-tab" data-nav="friends-wrapper">
+                    <i class="icon icon-friend"></i>
+                </span>
+                <span class="nav-tab active" data-nav="groups-wrapper">
+                    <i class="icon icon-group"></i>
+                </span>
+            </div>
+            <div class="content">
+                <div id="sessions-wrapper" class="panel-item hide">
+                    <div class="item" id="show-notice">
+                        <div class="item-avatar">
+                            <img src="../../img/notice.png">
+                        </div>
+                        <div class="item-text">
+                            <p class="item-single-row">消息中心</p>
+                        </div>
+                    </div>
+                    <ul class="list" id="sessions"></ul>
+                </div>
+                <div id="friends-wrapper" class="panel-item hide">
+                    <div class="item" id="add-friend">
+                        <div class="item-avatar">
+                            <img src="../../img/add-friend.png">
+                        </div>
+                        <div class="item-text">
+                            <p class="item-single-row">添加好友</p>
+                        </div>
+                    </div>
+                    <div class="item" id="show-blacklist">
+                        <div class="item-avatar">
+                            <img src="../../img/black-list.png">
+                        </div>
+                        <div class="item-text">
+                            <p class="item-single-row">黑名单</p>
+                        </div>
+                    </div>
+                    <ul class="list" id="friends"></ul>
+                </div>
+                <div id="groups-wrapper" class="panel-item">
+                    <div class="item" id="create-team">
+                        <div class="item-avatar">
+                            <img src="../../img/add-group.png">
+                        </div>
+                        <div class="item-text">
+                            <p class="item-single-row">创建讨论组</p>
+                        </div>
+                    </div>
+                    <div class="item" id="create-group">
+                        <div class="item-avatar">
+                            <img src="../../img/add-group.png">
+                        </div>
+                        <div class="item-text">
+                            <p class="item-single-row">创建群</p>
+                        </div>
+                    </div>
+                    <div class="item" id="search-group">
+                        <div class="item-avatar">
+                            <img src="../../img/search-group.png">
+                        </div>
+                        <div class="item-text">
+                            <p class="item-single-row">搜索群</p>
+                        </div>
+                    </div>
+                    <ul class="list" id="groups"></ul>
+                    <ul class="list" id="teams"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="chat-window hide" id="chat-window">
+            <div class="title">
+                <img id="chat-window-avatar" src="../../img/group.png" data-operate="showOthersInfo">
+                <span id="chat-window-name" class="name">测试群</span>
+                <div class="cloud-msg" id="cloud-msg">
+                    <i class="icon icon-group-info"></i>
+                    <p>云记录</p>
+                </div>
+                <div class="group-info" id="group-info">
+                    <i class="icon icon-group-info"></i>
+                    <p>资料</p>
+                </div>
+            </div>
+            <div class="content"></div>
+            <div class="footer">
+                <input type="file" class="file hide">
+                <i class="icon icon-emoji"></i>
+                <i class="icon icon-file"></i>
+                <textarea class="msg-input"></textarea>
+                <span class="btn btn-send send">发送</span>
+            </div>
+            <div class="chat-mask">
+                <div class="mask-title"></div>
+                <div class="mask-content">您已退出</div>
+                <div class="mask-footer"></div>
+            </div>
+        </div>
+        <div class="group-info-container hide" id="group-info-container">
+            <div class="title">
+                <button class="btn btn-back close">返回</button>
+                资料
+            </div>
+            <div class="content">
+                <ul class="clearfix owner" id="group-member-list"></ul>
+            </div>
+            <div class="footer">
+                <div class="item item-1 clearfix">
+                    <img src="../../img/group.png" class="left radius-circle avatar">
+                    <p class="left account"></p>
+                </div>
+                <div class="item clearfix">
+                    <div class="item-des">名称</div>
+                    <div class="item-value group-name-ctn">
+                        <a>
+                            <span class="name group-name"></span>
+                            <i class="icon icon-write edit-name"></i>
+                        </a>
+                        <input type="text" id="group-name-input">
+                    </div>
+                </div>
+                <div class="item clearfix">
+                    <div class="item-des">介绍</div>
+                    <div class="item-value group-info-ctn">
+                        <a>
+                            <span class="name group-info"></span>
+                            <i class="icon icon-write edit-info"></i>
+                        </a>
+                        <input type="text" id="group-info-input">
+                    </div>
+                </div>
+                <div class="item radios clearfix">
+                    <div class="item-des">身份验证</div>
+                    <div class="item-value">
+                        <input type="radio" name="radio-0" value="0">
+                        <span>不需要验证</span>
+                        <input type="radio" name="radio-0" value="1" checked>
+                        <span>需要验证</span>
+                        <input type="radio" name="radio-0" value="2">
+                        <span>禁止任何人加入</span>
+                    </div>
+                </div>
+                <div class="item radios clearfix">
+                    <div class="item-des">邀请他人权限</div>
+                    <div class="item-value">
+                        <input type="radio" name="radio-1" value="0" checked>
+                        <span>管理员</span>
+                        <input type="radio" name="radio-1" value="1">
+                        <span>所有人</span>
+                    </div>
+                </div>
+                <div class="item radios clearfix">
+                    <div class="item-des">群资料修改权限</div>
+                    <div class="item-value">
+                        <input type="radio" name="radio-2" value="0" checked>
+                        <span>管理员</span>
+                        <input type="radio" name="radio-2" value="1">
+                        <span>所有人</span>
+                    </div>
+                </div>
+                <div class="item radios clearfix">
+                    <div class="item-des">被邀请人身份验证</div>
+                    <div class="item-value">
+                        <input type="radio" name="radio-3" value="0" checked>
+                        <span>需要验证</span>
+                        <input type="radio" name="radio-3" value="1">
+                        <span>不需要验证</span>
+                    </div>
+                </div>
+                <div class="btns">
+                    <a class="exist-group">退出该群</a>
+                    <a class="dissolve-group hide">解散该群</a>
+                </div>
+            </div>
+        </div>
+        <div class="cloud-msg-container hide" id="cloud-msg-container">
+            <div class="title">
+                <button class="btn btn-back close">返回</button>
+                云记录
+            </div>
+            <div class="content"></div>
+        </div>
+    </div>
+    <div class="mask hide" id="mask"></div>
+    <div class="card hide" id="my-info">
+        <i class="icon icon-close close"></i>
+        <div class="account-info clearfix">
+            <img src="../../img/notice.png" id="modify-avatar" class="avatar" alt="更换头像">
+            <div class="des">
+                <p class="nick-name"></p>
+                <i class="gender male"></i>
+                <p>
+                    <span class="account"></span>
+                </p>
+            </div>
+        </div>
+        <div class="user-info">
+            <p class="title">基本信息</p>
+            <div class="operate">
+                <span class="operate-btn operate-edit">编辑</span>
+                <span class="operate-btn operate-save">保存</span>
+                <span class="operate-btn operate-cancel">取消</span>
+            </div>
+            <div class="user-info-display">
+                <div class="item">
+                    <div class="item-des">生日</div>
+                    <div class="item-value u-birthday">--</div>
+                </div>
+                <div class="item">
+                    <div class="item-des">手机</div>
+                    <div class="item-value u-tel">--</div>
+                </div>
+                <div class="item">
+                    <div class="item-des">邮箱</div>
+                    <div class="item-value u-email">--</div>
+                </div>
+                <div class="item">
+                    <div class="item-des">签名</div>
+                    <div class="item-value u-sign">--</div>
+                </div>
+            </div>
+            <div class="user-info-edit">
+                <div class="item">
+                    <div class="item-des">昵称</div>
+                    <input type="text" data-des="nick-name" class="item-input" maxlength="10">
+                </div>
+                <div class="item">
+                    <div class="item-des">性别</div>
+                    <select data-des="gender" class="item-select">
+                        <option value="不显示">不显示</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <div class="item-des">生日</div>
+                    <input type="date" data-des="birthday" class="item-input" maxlength="10">
+                </div>
+                <div class="item">
+                    <div class="item-des">手机</div>
+                    <input type="text" data-des="tel" class="item-input w260" maxlength="10">
+                </div>
+                <div class="item">
+                    <div class="item-des">邮箱</div>
+                    <input type="email" data-des="email" class="item-input w260" maxlength="10">
+                </div>
+                <div class="item">
+                    <div class="item-des">签名</div>
+                    <textarea type="text" data-des="sign" class="item-textarea" maxlength="30"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card hide" id="others-info">
+        <i class="icon icon-close close"></i>
+        <div class="account-info clearfix">
+            <img src="../../img/default-avatar.png" class="avatar" alt="头像">
+            <div class="des left">
+                <p class="nick-name"></p>
+                <i class="gender"></i>
+                <p><span class="u-account"></span></p>
+                <p><span class="u-nickName"></span></p>
+            </div>
+        </div>
+        <div class="user-info">
+            <div class="item">
+                <div class="item-des">备注名</div>
+                <input type="text" class="note item-input" maxlength="16">
+                <a class="save">保存</a>
+            </div>
+            <div class="item">
+                <div class="item-des">生日</div>
+                <div class="item-value u-birthday">--</div>
+            </div>
+            <div class="item">
+                <div class="item-des">手机</div>
+                <div class="item-value u-tel">--</div>
+            </div>
+            <div class="item">
+                <div class="item-des">邮箱</div>
+                <div class="item-value u-email">--</div>
+            </div>
+            <div class="item">
+                <div class="item-des">签名</div>
+                <div class="item-value u-sign">--</div>
+            </div>
+        </div>
+        <ul>
+            <li class="mutelist">
+                消息提醒
+                <div class="switch">
+                    <img src="../../img/btn-switch.png" class="toggle-mutelist">
+                    <span class="off">off</span>
+                    <span class="on">on</span>
+                </div>
+            </li>
+            <li class="blacklist off">
+                黑名单
+                <div class="switch">
+                    <img src="../../img/btn-switch.png" class="toggle-blacklist">
+                    <span class="off">off</span>
+                    <span class="on">on</span>
+                </div>
+            </li>
+        </ul>
+        <div class="buttons">
+            <button class="btn btn-del del">删除好友</button>
+            <button class="btn btn-cancel add">加为好友</button>
+            <button class="btn btn-ok chat">聊天</button>
+        </div>
+    </div>
+    <div class="modify-avatar-card hide" id="modify-avatar-card">
+        <i class="icon icon-close close"></i>
+        <div class="title">头像更换</div>
+        <div class="chose-file-container">
+            <input type="file" class="hide" id="chose-avatar" >
+            <div class="chose-file chose-avatar">选择图片</div>
+        </div>
+        <div class="chose">
+            <img src class="hide">
+        </div>
+        <div class="big">
+            <div class="img">
+                <img src class="hide">
+            </div>
+            <p>160*160</p>
+        </div>
+        <div class="small">
+            <div class="img">
+                <img src class="hide">
+            </div>
+            <p>40*40</p>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-cancel close">取消</button>
+            <button class="btn btn-reselect chose-avatar">重新选择</button>
+            <button class="btn btn-save save">保存</button>
+        </div>
+    </div>
+    <div class="notice hide" id="notice">
+        <div class="title">
+            消息中心
+            <i class="icon icon-close close"></i>
+            <i class="trash"></i>
+        </div>
+        <ul class="nav clearfix">
+            <li class="tab active" data-notice="system-notice">系统通知</li>
+            <li class="tab" data-notice="custom-notice">自定义通知</li>
+        </ul>
+        <ul class="content" id="system-notice"></ul>
+        <ul class="content hide" id="custom-notice"></ul>
+    </div>
+    <div class="dialog hide" id="user-dialog">
+        <div class="title">
+            添加好友
+            <i class="icon icon-close close"></i>
+        </div>
+        <div class="content">
+            <input type="text" name="search" placeholder="请输入账号">
+            <div class="info clearfix">
+                <img class="avatar left" src="../../img/default-avatar.png">
+                <div class="des left">
+                    <p class="nick-name">user1</p>
+                    <p class="account">账号：user1</p>
+                </div>
+            </div>
+            <div class="tip">该帐号不存在，请检查你输入的帐号是否正确</div>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-cancel close">取消</button>
+            <button class="btn btn-ok search">确定</button>
+            <button class="btn btn-cancel back">继续搜索</button>
+            <button class="btn btn-ok add">加为好友</button>
+            <button class="btn btn-ok done">完成</button>
+            <button class="btn btn-ok chat">聊天</button>
+            <button class="btn btn-del remove-blacklist">移出黑名单</button>
+        </div>
+    </div>
+    <div class="dialog hide" id="group-dialog">
+        <div class="title">
+            搜索高级群
+            <i class="icon icon-close close"></i>
+        </div>
+        <div class="content">
+            <input type="text" name="search" placeholder="请输入群id">
+            <div class="info clearfix">
+                <img class="avatar left" src="../../img/group.png">
+                <div class="des left">
+                    <p class="group-name">group</p>
+                    <p class="account">233</p>
+                </div>
+            </div>
+            <div class="tip">该群不存在，请检查你输入的群id是否正确</div>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-cancel close">取消</button>
+            <button class="btn btn-ok search">确定</button>
+            <button class="btn btn-cancel back">继续搜索</button>
+            <button class="btn btn-ok add">申请加入</button>
+            <button class="btn btn-ok done">完成</button>
+            <button class="btn btn-ok chat">聊天</button>
+        </div>
+    </div>
+    <div class="dialog hide" id="logout-dialog">
+        <i class="icon icon-close close"></i>
+        <p class="content">确定要退出IM吗？</p>
+        <div class="buttons">
+            <button class="btn btn-cancel close">取消</button>
+            <button class="btn btn-ok logout">确定</button>
+        </div>
+    </div>
+    <div class="m-blacklist hide" id="blacklist">
+        <div class="title">
+            黑名单
+            <i class="icon icon-close close"></i>
+        </div>
+        <div class="tip">你不会接收到列表中联系人的任何消息</div>
+        <ul class="list clearfix"></ul>
+    </div>
+    <div class="create-group-container hide" id="create-group-container">
+        <div class="title">
+            添加成员
+            <i class="icon icon-close close"></i>
+        </div>
+        <div class="group-wrapper">
+            <ul class="user-list"></ul>
+            <div class="added-list">
+                <p>已添加<span id="add-user-count">0</span>人</p>
+                <ul id="added-list"></ul>
+            </div>
+        </div>
+        <div class="footer buttons">
+            <button class="btn btn-cancel close">取消</button>
+            <button class="btn btn-ok add">确认</button>
+        </div>
+    </div>
+
+    <script type="text/template" id="chat-panel-header-template">
+        <img src="{{ avatar }}" class="avatar" id="avatar">
+        <span id="nick-name">{{ nickName }}</span>
+        <i class="pencil"></i>
+        <span id="logout">退出</span>
+    </script>
+    <script type="text/template" id="chat-panel-session-item-template">
+        <li class="item" data-type="{{ type }}" data-account="{{ account }}">
+            <div class="item-avatar">
+                <img src="{{ avatar }}">
+            </div>
+            <div class="item-text">
+                <p class="item-multi-row">
+                    <span class="item-nick-name">{{ name }}</span>
+                    <b class="item-time">{{ updateTime }}</b>
+                </p>
+                <p class="item-multi-row">
+                    <span class="item-last-msg">{{ lastMessage }}</span>
+                    <b class="item-count">{{ unRead }}</b>
+                </p>
+            </div>
+        </li>
+    </script>
+    <script type="text/template" id="chat-panel-friend-item-template">
+        <li class="item" data-type="p2p" data-account="{{ account }}">
+            <div class="item-avatar">
+                <img src="{{ avatar }}">
+            </div>
+            <div class="item-text">
+                <p class="item-single-row">{{ name }}</p>
+            </div>
+        </li>
+    </script>
+    <script type="text/template" id="chat-panel-group-item-template">
+        <li class="item" data-type="{{ type }}" data-account="{{ account }}">
+            <div class="item-avatar">
+                <img src="{{ avatar }}">
+            </div>
+            <div class="item-text">
+                <p class="item-single-row">{{ name }}</p>
+            </div>
+        </li>
+    </script>
+    <script type="text/template" id="chat-panel-team-item-template">
+        <li class="item" data-type="{{ type }}" data-account="{{ account }}">
+            <div class="item-avatar">
+                <img src="{{ avatar }}">
+            </div>
+            <div class="item-text">
+                <p class="item-single-row">{{ name }}</p>
+            </div>
+        </li>
+    </script>
+    <script type="text/template" id="notice-system-item-template">
+        <li class="item">
+            <img class="left" src="{{ avatar }}">
+            <div class="message">
+                <p>
+                    <span>{{ name }}</span>
+                    <b class="time">{{ time }}</b>
+                </p>
+                <p>
+                    <span class="message-des">{{ content }}</span>
+                    <b class="right">
+                        <a class="operate" data-operate="同意">同意</a>
+                        <a class="operate" data-operate="拒绝">拒绝</a>
+                    </b>
+                </p>
+            </div>
+        </li>
+    </script>
+    <script type="text/template" id="notice-custom-item-template">
+        <li class="item">
+            <img class="left" src="{{ avatar }}">
+            <div class="message">
+                <p>
+                    <span>{{ name }}</span>
+                    <b class="time">{{ time }}</b>
+                </p>
+                <p>
+                    <span class="message-des">{{ content }}</span>
+                    <b class="right">
+                        <a class="operate" data-operate="同意">同意</a>
+                        <a class="operate" data-operate="拒绝">拒绝</a>
+                    </b>
+                </p>
+            </div>
+        </li>
+    </script>
+    <script type="text/template" id="time-msg-template">
+        <p class="time-msg">- - - - -&nbsp;{{ time }}&nbsp;- - - - -</p>
+    </script>
+    <script type="text/template" id="system-msg-template">
+        <p class="item">
+            <span class="system-msg">{{ content }}</span>
+        </p>
+    </script>
+    <script type="text/template" id="me-msg-template">
+        <div class="item item-me">
+            <img src="{{ avatar }}">
+            <div class="msg"><p class="box">{{ content }}</p></div>
+        </div>
+    </script>
+    <script type="text/template" id="others-group-msg-template">
+        <div class="item item-other">
+            <img src="{{ avatar }}" data-operate="showOthersInfo" data-account="{{ account }}">
+            <p class="name">{{ name }}</p>
+            <div class="msg"><p class="box">{{ content }}</p></div>
+        </div>
+    </script>
+    <script type="text/template" id="others-p2p-msg-template">
+        <div class="item item-other">
+            <img src="{{ avatar }}" data-operate="showOthersInfo">
+            <div class="msg"><p class="box">{{ content }}</p></div>
+        </div>
+    </script>
+    <script type="text/template" id="group-info-plus-template">
+        <li class="add-item">
+            <i class="icon icon-plus"></i>
+        </li>
+    </script>
+    <script type="text/template" id="group-info-owner-template">
+        <li data-account="{{ account }}">
+            <a>
+                <img src="{{ avatar }}">
+                <i class="icon icon-user radius-circle"></i>
+            </a>
+            <p>{{ name }}</p>
+        </li>
+    </script>
+    <script type="text/template" id="group-info-owner-member-template">
+        <li data-account="{{ account }}">
+            <a>
+                <img src="{{ avatar }}">
+                <span class="hover">移除</span>
+            </a>
+            <p>{{ name }}</p>
+        </li>
+    </script>
+    <script type="text/template" id="group-info-member-template">
+        <li data-account="{{ account }}">
+            <a>
+                <img src="{{ avatar }}">
+            </a>
+            <p>{{ name }}</p>
+        </li>
+    </script>
+    <script type="text/template" id="create-group-add-template">
+        <li data-account="{{ account }}">
+            <i class="icon icon-radio {{ status }}"></i>
+            <img src="{{ avatar }}" class="avatar">
+            <span class="name">{{ name }}</span>
+        </li>
+    </script>
+    <script type="text/template" id="create-group-added-template">
+        <li data-account="{{ account }}">
+            <img src="{{ avatar }}" class="avatar">
+            <p class="name">{{ name }}</p>
+        </li>
+    </script>
+    <script type="text/template" id="blacklist-item-template">
+        <li class="item clearfix" data-account="{{ account }}">
+            <img class="avatar" src="{{ avatar }}">
+            <span class="nick-name">{{ name }}</span>
+            <button class="btn btn-ok">解除</button>
+        </li>
+    </script>
+    <script src="../../js/config/config.js"></script>
+    <script src="../../build/js/utils/utils.min.js"></script>
+    <script src="../../build/js/mock/server.min.js"></script>
+    <script src="../../build/js/main/1.0.min.js"></script>
+</body>
+</html>

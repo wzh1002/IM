@@ -1,0 +1,94 @@
+.create-group-container {
+  & {
+    position: fixed;
+    width: 680px;
+    height: 580px;
+    top: 50%;
+    left: 50%;
+    margin-top: -290px;
+    margin-left: -340px;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    z-index: 9;
+  }
+  .title {
+    @extend .card-title;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+  }
+  .group-wrapper {
+    height: 445px;
+  }
+  .user-list {
+    & {
+      height: 450px;
+      width: 448px;
+      border-right: 1px solid #ececec;
+      float: left;
+      overflow-y: auto;
+      padding: 15px;
+    }
+    li {
+      & {
+        width: 148px;
+        float: left;
+        line-height: 40px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+      img {
+        vertical-align: middle;
+        margin: 0 8px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  .added-list {
+    & {
+      margin-left: 448px;
+    }
+    ul {
+      & {
+        overflow-y: auto;
+        padding: 15px;
+        height: 100%;
+      }
+      li {
+        float: left;
+        width: 50%;
+        position: relative;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .name {
+        @extend .clips;
+        display: inline-block;
+        width: 80px;
+        height: 20px;
+        vertical-align: middle;
+      }
+    }
+    img {
+      width: 56px;
+      height: 56px;
+    }
+    > p {
+      padding: 5px 0 0 10px;
+    }
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    padding: 22px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+  }
+  .btn-ok {
+    margin-left: 14px;
+  }
+}

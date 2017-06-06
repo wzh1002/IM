@@ -1,0 +1,84 @@
+.notice {
+  & {
+    position: fixed;
+    width: 680px;
+    height: 580px;
+    top: 50%;
+    left: 50%;
+    margin-top: -290px;
+    margin-left: -340px;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    z-index: 9;
+    border-radius: 5px;
+  }
+  .title {
+    @extend .card-title;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    color: #3a4a59;
+    background-color: #edecee;
+    padding: 0 15px;
+  }
+  .nav {
+    .tab {
+      & {
+        position: relative;
+        text-align: center;
+        float: left;
+        font-size: 14px;
+        line-height: 44px;
+        width: 50%;
+        background-color: #f3faff;
+        cursor: pointer;
+      }
+      &.active {
+        background-color: #e5f4ff;
+        border-bottom: 2px solid #6b8299;
+      }
+    }
+  }
+  .content {
+    & {
+      position: relative;
+      height: 470px;
+      overflow-y: auto;
+      font-size: 12px;
+    }
+    .item {
+      border-bottom: 1px solid #eaeeef;
+      overflow: hidden;
+      height: 61px;
+      padding: 10px 20px;
+    }
+    img {
+      @extend .img-small
+    }
+    .message {
+      margin-left: 60px;
+      padding: 3px 0;
+      position: relative;
+      height: 45px;
+      overflow: hidden;
+    }
+    span {
+      @extend .clips;
+      width: 60%;
+      display: inline-block;
+    }
+    .time {
+      position: absolute;
+      right: 0;
+      top: 5px;
+      color: #999;
+    }
+    .message-des {
+      display: inline-block;
+      width: 80%;
+      color: #6b8299;
+      height: 20px;
+      line-height: 20px;
+    }
+  }
+}
